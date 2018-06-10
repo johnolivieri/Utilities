@@ -17,20 +17,21 @@ namespace GenRevision
             vm.ShowWindow += OnShowWindow;
         }
 
-        private void OnShowWindow(object sender, System.EventArgs e)
-        {
-            if (WindowState == WindowState.Minimized)
-            {
-                WindowState = WindowState.Normal;
-            }
-
-            Activate();
-        }
-
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             var vm = DataContext as MainViewModel;
             vm.StopTimer();
+        }
+
+        private void OnShowWindow(object sender, System.EventArgs e)
+        {
+            Visibility = Visibility.Visible;
+            Activate();
+        }
+
+        private void HideButton_Click(object sender, RoutedEventArgs e)
+        {
+            Visibility = Visibility.Hidden;
         }
     }
 }
