@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 
@@ -30,6 +31,15 @@ namespace GenRevision
                 // Spawn a thread which will be waiting for our event
                 var thread = new Thread(() =>
                 {
+                    string hideParameter = e.Args.Where(arg => string.Compare("hide", arg, true) == 0).FirstOrDefault();
+                    if (!string.IsNullOrEmpty(hideParameter))
+                    {
+                        Current.Dispatcher.BeginInvoke((Action) (() =>
+                        {
+                            Current.MainWindow.Visibility = Visibility.Hidden;
+                        }));
+                    }
+
                     while (_eventWaitHandle.WaitOne())
                     {
                         Current.Dispatcher.BeginInvoke((Action) (() => ((MainWindow) Current.MainWindow).BringToForeground()));
