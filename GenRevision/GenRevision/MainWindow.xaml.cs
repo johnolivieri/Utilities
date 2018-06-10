@@ -23,15 +23,20 @@ namespace GenRevision
             vm.StopTimer();
         }
 
-        private void OnShowWindow(object sender, System.EventArgs e)
+        private void Window_StateChanged(object sender, System.EventArgs e)
         {
-            Visibility = Visibility.Visible;
-            Activate();
+            if (WindowState == WindowState.Minimized)
+            {
+                Visibility = Visibility.Hidden;
+            }
         }
 
-        private void HideButton_Click(object sender, RoutedEventArgs e)
+        private void OnShowWindow(object sender, System.EventArgs e)
         {
-            Visibility = Visibility.Hidden;
+            Show();
+            WindowState = WindowState.Normal;
+            Activate();
+            Focus();
         }
     }
 }
