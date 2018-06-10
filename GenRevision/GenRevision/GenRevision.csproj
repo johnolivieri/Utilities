@@ -35,7 +35,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>GenRevision.Program</StartupObject>
+    <StartupObject>GenRevision.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Icons\calendar.ico</ApplicationIcon>
@@ -65,7 +65,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\ShowCommand.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="ViewModels\IMainViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Notifier.cs" />

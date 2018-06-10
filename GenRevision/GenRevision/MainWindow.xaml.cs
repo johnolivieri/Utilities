@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using GenRevision.ViewModels;
 
@@ -23,7 +24,7 @@ namespace GenRevision
             vm.StopTimer();
         }
 
-        private void Window_StateChanged(object sender, System.EventArgs e)
+        private void Window_StateChanged(object sender, EventArgs e)
         {
             if (WindowState == WindowState.Minimized)
             {
@@ -31,12 +32,17 @@ namespace GenRevision
             }
         }
 
-        private void OnShowWindow(object sender, System.EventArgs e)
+        public void BringToForeground()
         {
             Show();
             WindowState = WindowState.Normal;
             Activate();
             Focus();
+        }
+
+        private void OnShowWindow(object sender, EventArgs e)
+        {
+            BringToForeground();
         }
     }
 }
